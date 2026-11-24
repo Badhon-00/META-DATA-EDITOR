@@ -5,3 +5,11 @@
 @media(max-width:1000px){.content{padding:30px 24px}.grid{grid-template-columns:1fr}header{padding:0 24px}}
 @media(max-width:760px){.shell,.shell:has(.side.collapsed){display:block}.side{position:fixed;inset:0 auto 0 0;width:min(300px,84vw);height:100dvh;transform:translateX(-105%);box-shadow:var(--shadow);padding:24px 17px;overflow-y:auto}.side.open{transform:translateX(0)}.side.collapsed{width:min(300px,84vw)}.side.collapsed .brand>span:last-child,.side.collapsed .label,.side.collapsed .nav small,.side.collapsed .nav b,.side.collapsed .sidefoot{display:block}.side.collapsed .nav{height:auto;padding:12px 11px}.side.collapsed .nav:after{display:none}.mobile-close{display:grid;place-items:center;position:absolute;right:14px;top:16px;width:32px;height:32px;border:1px solid var(--line);border-radius:9px;background:var(--surface);color:var(--ink);font-size:21px}.scrim.visible{display:block;position:fixed;inset:0;z-index:29;border:0;background:var(--scrim);backdrop-filter:blur(2px)}header{height:58px;padding:0 14px}.header-left,.header-actions{gap:9px}.tag{display:none}.content{padding:25px 14px}.heading strong{display:none}.panel{padding:17px}.fields{grid-template-columns:1fr}footer{font-size:7px;gap:12px;flex-wrap:wrap}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;scroll-behavior:auto!important}}
+
+/* Compact navigation keeps recognizable tool initials instead of anonymous dots. */
+.nav-icon{display:none}
+.side.collapsed .nav-copy{display:none}
+.side.collapsed .nav-icon{display:grid;place-items:center;width:34px;height:34px;border:1px solid var(--line);border-radius:10px;font:700 12px Manrope;color:var(--ink);background:var(--surface-soft)}
+.side.collapsed .nav{display:flex;align-items:center;justify-content:center}
+.side.collapsed .nav:after{display:none}
+@media(max-width:760px){.side.collapsed .nav-copy{display:block}.side.collapsed .nav-icon{display:none}.side.collapsed .nav{display:block}}
