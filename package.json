@@ -1,9 +1,9 @@
 {
   "name": "meta-data-editor",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "private": true,
   "type": "module",
-  "engines": { "node": ">=20.19.0" },
+  "engines": { "node": "22.x" },
   "description": "A privacy-first Unicode and media metadata workbench for images, GIFs, stickers and emoji carriers.",
   "scripts": {
     "dev": "next dev",
@@ -22,7 +22,6 @@
   },
   "devDependencies": {
     "@types/node": "^22.10.2",
-    "@types/piexifjs": "^1.0.4",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "typescript": "^5.7.2"
