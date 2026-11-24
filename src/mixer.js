@@ -1,0 +1,5 @@
+import getEmojiMixUrl, { toUnicode, checkSupported, supportedEmojis } from 'emoji-mixer';
+export function unicodeToEmoji(code){return String(code).split('-').map(part=>String.fromCodePoint(parseInt(part,16))).join('');}
+export function listSupportedEmojiChars(){return supportedEmojis.map(code=>({code,emoji:unicodeToEmoji(code)}));}
+export function mixEmojis(leftInput,rightInput){let left,right;try{left=toUnicode(leftInput,true)}catch{}try{right=toUnicode(rightInput,true)}catch{}if(!left)return{ok:false,reason:'invalid_left'};if(!right)return{ok:false,reason:'invalid_right'};if(!supportedEmojis.includes(left))return{ok:false,reason:'unsupported_left'};if(!supportedEmojis.includes(right))return{ok:false,reason:'unsupported_right'};const url=getEmojiMixUrl(left,right,false,true);if(!url)return{ok:false,reason:'no_combo'};return{ok:true,url,left:unicodeToEmoji(left),right:unicodeToEmoji(right)};}
+export function listCompatible(emoji){let code;try{code=toUnicode(emoji,true)}catch{return []}if(!code)return[];return(checkSupported(code,true)||[]);}
