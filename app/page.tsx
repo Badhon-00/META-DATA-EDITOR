@@ -9,6 +9,10 @@ const FIELDS=["Title","Author","Description","Copyright","Comment","Keywords","S
 const QUICK=["😀","😂","🥰","😎","🤔","👍","👏","🎉","❤️","✨","🌙","🔥","🌈","🍀","🌸","🍓","☕","🎧","🚀","🦋","🐱","🐶","🫶","🙏","💯","🥹","🩷","🩵","💀","👀"];
 type Tab="photo"|"gif"|"sticker"|"emoji"|"mix"|"decode";
 export default function Home(){
+ const [theme,setTheme]=useState<"light"|"dark">("light"),[menuOpen,setMenuOpen]=useState(false),[sidebarCollapsed,setSidebarCollapsed]=useState(false);
+ useEffect(()=>{const saved=localStorage.getItem("meta-studio-theme");const initial=saved==="dark"?"dark":"light";setTheme(initial);document.documentElement.dataset.theme=initial;},[]);
+ function changeTheme(next:"light"|"dark"){setTheme(next);document.documentElement.dataset.theme=next;localStorage.setItem("meta-studio-theme",next);}
+
  const [tab,setTab]=useState<Tab>("photo"),[file,setFile]=useState<File|null>(null),[preview,setPreview]=useState(""),[meta,setMeta]=useState<MetaMap>({Software:"META DATA EDITOR"}),[status,setStatus]=useState(""),[busy,setBusy]=useState(false),[decoded,setDecoded]=useState(""),[decodeFile,setDecodeFile]=useState<File|null>(null),[message,setMessage]=useState(""),[carrier,setCarrier]=useState(""),[base,setBase]=useState("🌙"),[left,setLeft]=useState("🌙"),[right,setRight]=useState("❤️"),[gifComment,setGifComment]=useState(""),[frames,setFrames]=useState<File[]>([]),[delay,setDelay]=useState(500),[loop,setLoop]=useState(true),[pack,setPack]=useState(""),[author,setAuthor]=useState(""),[stickerEmoji,setStickerEmoji]=useState(""),[slot,setSlot]=useState<"left"|"right">("left"),[search,setSearch]=useState("");
  const emojis=useMemo(()=>QUICK.filter(x=>!search||x.includes(search)),[search]);
  const set=(k:string,v:string)=>setMeta(m=>({...m,[k]:v}));
